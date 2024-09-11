@@ -1,30 +1,30 @@
 // Виведення повідомлення у консоль
-console.log("Привіт, це приклад коду на JavaScript!");
+console.log("Привіт, це приклад коду на TypeScript!");
 
 // Тип Number: прості математичні операції
-let a = 10;
-let b = 25;
-let c = a + b;
+let a: number = 10;
+let b: number = 25;
+let c: number = a + b;
 console.log("Сума:", c);
 
-let product = a * b;
+let product: number = a * b;
 console.log("Добуток:", product);
 
 // Вираховуємо середнє значення
-let average = (a + b + c) / 3;
+let average: number = (a + b + c) / 3;
 console.log("Середнє значення:", average);
 
 // Boolean: перевірка умов
-let isGreater = a > b;
+let isGreater: boolean = a > b;
 console.log("a більше за b?", isGreater);
 
-let isEqual = a === b;
+let isEqual: boolean = a === b;
 console.log("a дорівнює b?", isEqual);
 
 // Тип String: робота з рядками
-let greeting = "Привіт, ";
-let name = "Іван";
-let fullGreeting = greeting + name + "!";
+let greeting: string = "Привіт, ";
+let name: string = "Іван";
+let fullGreeting: string = `${greeting}${name}!`;
 console.log(fullGreeting);
 
 // Отримання довжини рядка
@@ -35,7 +35,7 @@ console.log("Привітання у верхньому регістрі:", full
 console.log("Привітання у нижньому регістрі:", fullGreeting.toLowerCase());
 
 // Масиви
-let numbers = [1, 2, 3, 4, 5];
+let numbers: number[] = [1, 2, 3, 4, 5];
 console.log("Масив чисел:", numbers);
 
 // Додавання елементів до масиву
@@ -47,20 +47,27 @@ numbers.pop();
 console.log("Масив після видалення:", numbers);
 
 // Ітерація через масив
-for (let i = 0; i < numbers.length; i++) {
+for (let i: number = 0; i < numbers.length; i++) {
     console.log("Елемент масиву:", numbers[i]);
 }
 
 // Функції
-function add(x, y) {
+function add(x: number, y: number): number {
     return x + y;
 }
 
-let result = add(5, 10);
+let result: number = add(5, 10);
 console.log("Результат додавання через функцію:", result);
 
 // Об'єкти: опис машини
-let car = {
+interface Car {
+    brand: string;
+    model: string;
+    year: number;
+    isElectric: boolean;
+}
+
+let car: Car = {
     brand: "Toyota",
     model: "Corolla",
     year: 2020,
@@ -85,19 +92,19 @@ if (car.isElectric) {
 }
 
 // Тип null
-let emptyValue = null;
+let emptyValue: null = null;
 console.log("Значення пусте:", emptyValue);
 
 // Використання undefined
-let undefinedValue;
+let undefinedValue: undefined;
 console.log("Не визначене значення:", undefinedValue);
 
 // Стрілкова функція
-let multiply = (x, y) => x * y;
+let multiply = (x: number, y: number): number => x * y;
 console.log("Результат множення через стрілкову функцію:", multiply(4, 5));
 
 // Умовна функція
-function isPositive(num) {
+function isPositive(num: number): string {
     return num > 0 ? "Позитивне" : "Негативне або нуль";
 }
 
@@ -105,45 +112,51 @@ console.log("Число 10 є:", isPositive(10));
 console.log("Число -5 є:", isPositive(-5));
 
 // Цикли та умовні конструкції
-let counter = 0;
+let counter: number = 0;
 while (counter < 5) {
     console.log("Лічильник:", counter);
     counter++;
 }
 
 // Цикл for
-for (let i = 0; i <= 5; i++) {
+for (let i: number = 0; i <= 5; i++) {
     console.log("Значення i у циклі:", i);
 }
 
 // Робота з датами
-let today = new Date();
+let today: Date = new Date();
 console.log("Сьогоднішня дата:", today);
 
 // Отримання року з дати
 console.log("Поточний рік:", today.getFullYear());
 
 // Масив об'єктів
-let students = [
+interface Student {
+    name: string;
+    age: number;
+}
+
+let students: Student[] = [
     { name: "Олег", age: 21 },
     { name: "Марія", age: 22 },
     { name: "Іван", age: 23 }
 ];
 
 // Ітерація через масив об'єктів
-students.forEach((student) => {
-    console.log(student.name + " має " + student.age + " років.");
+students.forEach((student: Student) => {
+    console.log(`${student.name} має ${student.age} років.`);
 });
 
 // Використання try-catch для обробки помилок
 try {
-    let divisionResult = 10 / 0;
+    let divisionResult: number = 10 / 0;
     if (!isFinite(divisionResult)) {
         throw new Error("Ділення на нуль!");
     }
     console.log("Результат ділення:", divisionResult);
 } catch (error) {
-    console.log("Помилка:", error.message);
+    console.log("Помилка:", (error as Error).message);
 }
 
 console.log("Кінець програми.");
+
